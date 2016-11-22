@@ -8,7 +8,6 @@ import project.propertyApp.person.Person
 import project.propertyApp.property.Amenities
 import project.propertyApp.property.House
 import project.propertyApp.property.Office
-import project.propertyApp.property.Property
 
 @Transactional
 class PropertyService {
@@ -43,40 +42,12 @@ class PropertyService {
                     possession: co.possession, houseType: co.houseType
             ).save(failOnError: true, flush: true)
 
-            println("---------------------1-------------")
-
-
             Amenities amenities = new Amenities(lift: co.lift, waterStorage: co.waterStorage,
                      atm: co.atm, conferenceRoom: co.conferenceRoom, gym: co.gym)
 
-            house.addToAmenities(amenities).save(flush: true, failOnError: true)
+            amenities.propertyUnit = house
 
-//            println(co.lift)
-//            amenities.lift = co.lift
-//            amenities.waterStorage = co.waterStorage
-//            amenities.atm = co.atm
-//            amenities.conferenceRoom = co.conferenceRoom
-//            amenities.gym = co.gym
-//            amenities.property= house
-
-
-            println("-------------------2-----------------")
-//
-//            if (amenities.validate()) {
-//                println("after validateeeeeeeeee")
-//                amenities.save()
-//            }
-//            else {
-//                println("errorrrrrrrrrr")
-//                amenities.errors.allErrors.each {
-//                    println it
-//                }
-//            }
-
-//            println("-------------------3-----------------")
-//            house.amenities=amenities
-//            amenities.save(flush: true, failOnError: true)
-
+            house.amenities = amenities
 
             person.addToProps(house).save(failOnError: true, flush: true)
             return true
@@ -91,29 +62,16 @@ class PropertyService {
 
             Person person = springSecurityService.currentUser
 
-            Amenities amenities = new Amenities()
-            amenities.lift = co.lift
-            amenities.waterStorage = co.waterStorage
-            amenities.atm = co.atm
-            amenities.conferenceRoom = co.conferenceRoom
-            amenities.gym = co.gym
-
-            if (amenities.validate()) {
-                amenities.save()
-            } else {
-                amenities.errors.allErrors.each {
-                    println it
-                }
-            }
-
-            amenities.save(flush: true, failOnError: true)
-
             Office office = new Office(location: co.location, address: co.address, pincode: co.pincode, parkingFacility: co.parkingFacility, area: co.area,
                     price: co.price, propertyFor: co.propertyFor, person: person, photoLocation: photoLocation, phoneNum: co.phoneNum,
-                    possession: co.possession, officeType: co.officeType, amenities: amenities)
+                    possession: co.possession, officeType: co.officeType)
 
-       //     amenities.property=office
+            Amenities amenities = new Amenities(lift: co.lift, waterStorage: co.waterStorage,
+                    atm: co.atm, conferenceRoom: co.conferenceRoom, gym: co.gym)
 
+            amenities.propertyUnit = office
+
+            office.amenities = amenities
 
             person.addToProps(office).save(failOnError: true, flush: true)
 

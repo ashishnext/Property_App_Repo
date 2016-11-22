@@ -2,7 +2,7 @@ package project.propertyApp.property
 
 import project.propertyApp.enums.Enums
 
-class Office extends Property {
+class Office extends PropertyUnit {
     Boolean parkingFacility
     Enums.OfficeType officeType
 

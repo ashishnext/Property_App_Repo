@@ -2,7 +2,7 @@ package project.propertyApp.property
 
 import project.propertyApp.enums.Enums
 
-class House extends Property{
+class House extends PropertyUnit{
     String rooms
     Boolean furnished
     Integer numOfBalconies

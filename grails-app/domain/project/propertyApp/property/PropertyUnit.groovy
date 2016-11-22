@@ -3,7 +3,7 @@ package project.propertyApp.property
 import project.propertyApp.enums.Enums
 import project.propertyApp.person.Person
 
-class Property {
+class PropertyUnit {
     String location
     String address
     String pincode
@@ -17,7 +17,7 @@ class Property {
     Enums.Possession possession
   //  Amenities amenities
 
-    static hasMany = [amenities: Amenities]
+    static hasOne = [amenities: Amenities]
 
 
     //String amenities

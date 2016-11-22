@@ -34,7 +34,7 @@ class DemoTagLib {
                     th{mb.yield "Address"}
                     th{mb.yield "Area(In sqfeet)"}
                     th{mb.yield "Price"}
-                    th{mb.yield "Property For"}
+                    th{mb.yield "PropertyUnit For"}
                     th{mb.yield "Rooms"}
                     th{mb.yield "Posted By"}
                 }

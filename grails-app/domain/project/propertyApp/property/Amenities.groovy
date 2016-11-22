@@ -7,9 +7,9 @@ class Amenities {
     Boolean conferenceRoom = false
     Boolean gym = false
 
-   // static belongsTo =[property: Property]
+    static belongsTo =[propertyUnit: PropertyUnit]
 
-   static belongsTo = Property
+   //static belongsTo = PropertyUnit
 
   //  static transients = ['lift', 'waterStorage', 'atm', 'conferenceRoom', 'gym']
     static constraints = {
