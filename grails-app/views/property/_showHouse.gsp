@@ -3,26 +3,45 @@
 
 
 <g:if test="${showHouseList}">
+    <h3 style="color: #138a72" class="bold text-center">Houses</h3>
+    <g:each in="${showHouseList}" var="hl">
 <div class="thumbnail">
+
     <div class="overlay-container">
-        <img src="assets/img/item-small.jpg">
+
+        %{--<img src="assets/img/item-small.jpg">--}%
+        <img style="height:250px;width:500px;"
+        src="${createLink(controller: "landing", action: "propertyImage", params: [photoLocation: hl.photoLocation])}"/>
+
+
         <div class="overlay-content">
-            <h3 class="h4 headline">Great Deal</h3>
-            <p>So you know you're getting a top quality property from an experienced team.</p>
+            <h3 class="h4 headline"><p class="bold"><span
+                    class="1 blue">House Type -</span> <span>${hl.houseType}</span></p></h3>
+
+
+            %{--<p>So you know you're getting a top quality property from an experienced team.</p>--}%
         </div><!-- /.overlay-content -->
+
     </div><!-- /.overlay-container -->
     <div class="thumbnail-meta">
-        <p><i class="fa fa-fw fa-home"></i> ${hl.Address}</p>
+        <p><i class="fa fa-fw fa-home"></i> ${hl.address}</p>
         <p><i class="fa fa-fw fa-map-marker"></i> ${hl.location}</p>
     </div>
     <div class="thumbnail-meta">
-        <i class="fa fa-fw fa-info-circle"></i> ${hl.area} | hl.rooms | ${hl.propertyFor} | 2 Garage
+        <i class="fa fa-fw fa-info-circle"></i> ${hl.area}(sqfeet) | ${hl.rooms} | ${hl.propertyFor} | 2 Garage
     </div>
     <div class="thumbnail-meta">
         <i class="fa fa-fw fa-dollar"></i> <span class="h3">${hl.price}</span> <a href="#link" class="btn btn-link pull-right">View <i class="fa fa-arrow-right"></i></a>
     </div>
+
 </div>
+    </g:each>
     </g:if>
+
+<g:else>
+    %{--<h3>No house property posted</h3>--}%
+    <h3 style="color: #138a72" class="bold text-center">No house property posted</h3>
+</g:else>
 
 
 
@@ -91,9 +110,7 @@
     %{--</div>--}%
 
 %{--</g:if>--}%
-%{--<g:else>--}%
-    %{--<h3>No house property posted</h3>--}%
-%{--</g:else>--}%
+
 
 
 </body>

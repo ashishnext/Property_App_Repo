@@ -2,7 +2,7 @@
 <%@ page import="project.propertyApp.property.House" %>
 <html>
 <head>
-    <meta name="layout" content="app">
+    <meta name="layout" content="check">
     <title></title>
 </head>
 
@@ -10,6 +10,7 @@
 %{--<h2>Login as Owner or Agent to post property</h2>--}%
 
 
+<br>
 <div class="container-fluid">
     <div class="row">
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_OWNER, ROLE_AGENT">

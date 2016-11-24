@@ -63,8 +63,21 @@
         <div class="collapse navbar-collapse navbar-main-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.html">Home</a>
+                    <a href="${createLink(controller: "landing", action: "home")}">Home</a>
                 </li>
+
+                <li class="active">
+                    <a href="${createLink(controller: "property", action: "allRentProperties", params: [propertyFor: project.propertyApp.enums.Enums.PropertyFor.RENT])}">Rent</a>
+                </li>
+
+                <li class="active">
+                    <a href="${createLink(controller: "property", action: "allSaleProperties", params: [propertyFor: project.propertyApp.enums.Enums.PropertyFor.SALE])}">Sale</a>
+                </li>
+
+                <li class="active">
+                    <a href="${createLink(controller: "property", action: "postProperty")}">Post Property</a>
+                </li>
+
                 <li class="dropdown">
                     <a href="#link" class="dropdown-toggle" data-toggle="dropdown">Real Estate <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -91,6 +104,32 @@
                     </ul>
                 </li>
             </ul><!-- /.navbar-nav -->
+        <ul class="nav navbar-nav navbar-right main-nav">
+            %{--<li><a href="${createLink(controller: "landing", action: "home")}" class="btn btn-info">Home</a></li>--}%
+            %{--<li><a href="${createLink(controller: "property", action: "postProperty")}" class="btn btn-info">Post Property</a></li>--}%
+
+            <sec:ifNotLoggedIn>
+                <li><a href="${createLink(controller: "landing", action: "login")}" class="btn color-square">Login / SignUp</a></li>
+            </sec:ifNotLoggedIn>
+            <li>          <div class="dropdown">
+                <button class="btn  dropdown-toggle" type="button" data-toggle="dropdown">
+                    <sec:ifLoggedIn>
+                        <img style="height:50px;width:60px;"src="${createLink(controller: "landing", action: "renderImage")}"/>
+
+                        ${project.propertyApp.person.Person.get(sec.loggedInUserInfo(field: 'id')).name}<br>
+                    %{--${project.propertyApp.person.Person.get(sec.loggedInUserInfo(field: 'id')).username}--}%
+
+                    </sec:ifLoggedIn>
+
+                    <span class="caret"></span>  </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">profile</a></li>
+                    <li><a href="${createLink(controller:"logout")}">Logout</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div></li>
+        </ul>
+
         </div><!-- /.collapse -->
     </div><!-- /.container -->
 </nav>
@@ -112,7 +151,7 @@
 <script src="${resource(dir: 'js/theme', file: "jquery-1.8.3.min.js")}"></script>
 <script src="${resource(dir: 'js/theme', file: "holder.js")}"></script>
 
-<script>window.jQuery || document.write('<script src="assets/js/jquery-1.8.3.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="${resource(dir: 'js/theme', file: "jquery-1.8.3.min.js")}"><\/script>')</script>
 
 <script>
     $(document).ready(function(){

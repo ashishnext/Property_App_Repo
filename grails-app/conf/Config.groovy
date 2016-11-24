@@ -152,6 +152,16 @@ grails {
     }
 }
 
+oauth {
+    linkedin {
+        requestTokenUrl="https://api.linkedin.com/uas/oauth/requestToken"
+        accessTokenUrl="https://api.linkedin.com/uas/oauth/accessToken"
+        authUrl="https://api.linkedin.com/uas/oauth/authorize"
+        consumer.key="81e63y3is2gs0l"
+        consumer.secret="4huX0IUr2yuRSYHI"
+    }
+}
+
 
 
 

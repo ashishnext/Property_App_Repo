@@ -95,22 +95,40 @@ class PropertyController {
     def search() {
 
         String[] priceRange = params.price.split("-")
-        def c = House.createCriteria()
-        List<House> results = c.list() {
-            ilike("location", params.searchLocation)
-            between("price", priceRange[0] as Long, priceRange[1] as Long)
-            eq("propertyFor", params.propertyFor as Enums.PropertyFor)
+        println("-------------------------")
+
+        if (Enums.HouseType.houseTypeList().contains(params.propertyType as Enums.HouseType)) {
+            println("-------In if---------")
+            def c = House.createCriteria()
+            List<House> results = c.list() {
+                ilike("location", params.searchLocation)
+                println("-----after location------")
+                between("price", priceRange[0] as Long, priceRange[1] as Long)
+                println("-----after price------")
+                eq("propertyFor", params.propertyFor as Enums.PropertyFor)
+                println("-----after propertyFor------")
+                eq('houseType', params.propertyType as Enums.HouseType)
+                println("-----after houseType------")
+            }
+
+            flash.search = "Search Result"
+            render(view: "searchResults", model: [searchList: results])
+        } else {
+
+            println("-------In else---------")
+            def c1 = Office.createCriteria()
+            List<Office> results1 = c1.list() {
+                ilike("location", params.searchLocation)
+                between("price", priceRange[0] as Long, priceRange[1] as Long)
+                eq("propertyFor", params.propertyFor as Enums.PropertyFor)
+                eq("officeType", params.propertyType as Enums.OfficeType)
+            }
+            flash.search = "Search Result"
+            render(view: "searchResults", model: [searchList: results1])
         }
 
-        def c1 = Office.createCriteria()
-        List<Office> results1 = c1.list() {
-            ilike("location", params.searchLocation)
-            between("price", priceRange[0] as Long, priceRange[1] as Long)
-            eq("propertyFor", params.propertyFor as Enums.PropertyFor)
-        }
-
-        flash.search = "Search Result"
-        render(view: "/landing/home", model: [houseBySearch: results, officeBySearch: results1])
+//        flash.search = "Search Result"
+//        render(view: "/landing/home", model: [houseBySearch: results, officeBySearch: results1])
 
 
     }

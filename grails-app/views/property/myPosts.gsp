@@ -2,12 +2,13 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="app">
+    <meta name="layout" content="check">
     <title></title>
 </head>
 
 <body>
-<h2>dekhfke</h2>
+%{--<h2>dekhfke</h2>--}%
+<br>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
@@ -15,13 +16,13 @@
         </div>
         <div class="col-md-6">
             <g:if test="${flash.message}">
-                <h4 style="color: #00a8ff" class="bold text-center">${flash.message}</h4>
+                <h4 style="color: #138a72" class="bold text-center">${flash.message}</h4>
             </g:if>
             <g:if test="${houseList}">
 
                 <div class="bs-docs-section">
 
-                    <h3 class="text-center alert-info"><b>Houses Posted</b></h3>
+                    <h3 style="color: #138a72" class="bold text-center"><b>Houses Posted</b></h3>
                     %{--<div class="row">--}%
                     %{--<div class="col-lg-12">--}%
                     %{--<div class="page-header">--}%
@@ -34,7 +35,7 @@
                             <tr>
                                 %{--<th>#</th>--}%
                                 <th>Location</th>
-                                <th>Area(In sqmtr)</th>
+                                <th>Area(In sqfeet)</th>
                                 <th>Price</th>
                                 <th>Property For</th>
                                 <th>Rooms</th>
@@ -46,7 +47,7 @@
 
                             <g:each in="${houseList}" var="hl">
 
-                                <tr class="alert-info">
+                                <tr class="">
                                     %{--<td>4</td>--}%
                                     <td>${hl.location}</td>
                                     <td>${hl.area}</td>
@@ -70,13 +71,14 @@
 
         </div>
 
+        <br><br>
 
         <div class="col-md-6">
             <g:if test="${officeList}">
 
                 <div class="bs-docs-section">
 
-                    <h3 class="text-center alert-info"><b>Offices Posted</b></h3>
+                    <h3 style="color: #138a72" class="bold text-center"><b>Offices Posted</b></h3>
                     %{--<div class="row">--}%
                     %{--<div class="col-lg-12">--}%
                     %{--<div class="page-header">--}%
@@ -88,7 +90,7 @@
                             <tr>
                                 %{--<th>#</th>--}%
                                 <th>Location</th>
-                                <th>Area(In sqmtr)</th>
+                                <th>Area(In sqfeet)</th>
                                 <th>Price</th>
                                 <th>Property For</th>
                                 <th>Parking Facility</th>
@@ -100,7 +102,7 @@
 
                             <g:each in="${officeList}" var="hl">
 
-                                <tr class="alert-info">
+                                <tr class="">
                                     %{--<td>4</td>--}%
                                     <td>${hl.location}</td>
                                     <td>${hl.area}</td>

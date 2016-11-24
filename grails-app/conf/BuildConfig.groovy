@@ -52,6 +52,7 @@ grails.project.dependency.resolution = {
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
         runtime 'mysql:mysql-connector-java:5.1.29'
+        compile 'com.github.scribejava:scribejava-apis:3.2.0'
     }
 
     plugins {
@@ -77,5 +78,7 @@ grails.project.dependency.resolution = {
         compile "org.grails.plugins:spring-security-core:2.0.0"
         runtime ":jquery:1.11.1"
         compile "org.grails.plugins:mail:1.0.7"
+
+//        compile "org.grails.plugins:spring-security-oauth2-provider:2.0-RC3"
     }
 }
